@@ -2,9 +2,13 @@ package com.example.consume_restapi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.consume_restapi.api.ApiClient;
@@ -19,7 +23,8 @@ import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity {
-    private ListView listView;
+    private TextView listView;
+    private Button btnAdd;
 
     private ApiClient apiClient;
 
@@ -31,8 +36,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         listView = findViewById(R.id.listView);
+//        btnAdd = findViewById(R.id.btnAdd);
 
-        getAll();
+//        getAll();
+        getKata();
+    }
+
+
+    public void add(View v){
+        Intent intent = new Intent(this,AddKamus.class);
+        startActivity(intent);
     }
 
     private void getAll() {
@@ -50,13 +63,13 @@ public class MainActivity extends AppCompatActivity {
                     kmsName[i] = kms.get(i).getIndonesia();
                 }
 
-                listView.setAdapter(
-                        new ArrayAdapter<String>(
-                                getApplicationContext(),
-                                android.R.layout.simple_list_item_1,
-                                kmsName
-                        )
-                );
+//                listView.setAdapter(
+//                        new ArrayAdapter<String>(
+//                                getApplicationContext(),
+//                                android.R.layout.simple_list_item_1,
+//                                kmsName
+//                        )
+//                );
             }
 
             @Override
@@ -65,5 +78,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void getKata() {
+        Call<Kamus> call = ApiClient.getKamusService().getKata("7");
+
+        call.enqueue(new Callback<Kamus>() {
+            @Override
+            public void onResponse(Call<Kamus> call, Response<Kamus> response) {
+                Kamus kms = response.body();
+
+                    String content = "";
+                    content += "Indonesia : " + kms.getIndonesia() + "\n";
+                    content += "Inggris : " + kms.getInggris() + "\n";
+                    content += "Jawa : " + kms.getJawa() + "\n";
+
+                    listView.append(content);
+            }
+
+            @Override
+            public void onFailure(Call<Kamus> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

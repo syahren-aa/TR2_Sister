@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Consume-RestAPI</string>
+    <string name="textview">TextView</string>
+    <string name="jawa">Jawa</string>
+    <string name="indo">Indonesia</string>
+    <string name="ing">Inggris</string>
+    <string name="send">Send</string>
+
 </resources>

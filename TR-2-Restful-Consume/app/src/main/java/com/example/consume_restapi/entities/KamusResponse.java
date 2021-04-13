@@ -1,15 +1,7 @@
 package com.example.consume_restapi.entities;
 
-public class Kamus {
+public class KamusResponse {
     private String indonesia;
-    private String inggris;
-    private String jawa;
-
-//    public Kamus(String indonesia, String inggris, String jawa) {
-//        this.indonesia = indonesia;
-//        this.inggris = inggris;
-//        this.jawa = jawa;
-//    }
 
     public String getIndonesia() {
         return indonesia;
@@ -35,4 +27,6 @@ public class Kamus {
         this.jawa = jawa;
     }
 
+    private String inggris;
+    private String jawa;
 }
