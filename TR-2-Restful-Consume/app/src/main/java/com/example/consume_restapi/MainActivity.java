@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void add(View v){
-        Intent intent = new Intent(this,AddKamus.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this,AddKamus.class);
+//        startActivity(intent);
     }
 
     private void getAll() {

@@ -18,10 +18,13 @@ public interface ApiInterface {
     @GET("/")
     Call<List<Kamus>> getAll();
 
-    @GET("/{id}")
+    @GET("/kata/{id}")
     Call<Kamus>getKata(@Path("id")String id);
 
-    @POST("/save")
-    Call<Kamus> addKamus(@Body Kamus kamus);
+    @GET("/{kata}")
+    Call<Kamus>getKatabyKata(@Path("kata")String kata);
+
+//    @POST("/save")
+//    Call<Kamus> addKamus(@Body Kamus kamus);
 
 }

@@ -5,5 +5,16 @@
     <string name="indo">Indonesia</string>
     <string name="ing">Inggris</string>
     <string name="send">Send</string>
+    <string-array name="daftar_kata">
+        <item>
+            Indonesia
+        </item>
+        <item>
+            Inggris
+        </item>
+        <item>
+            Jawa
+        </item>
+    </string-array>
 
 </resources>
